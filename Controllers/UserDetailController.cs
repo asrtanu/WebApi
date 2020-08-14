@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UserDetailController : ControllerBase
     {
@@ -16,7 +16,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "arun", "singh","rawat" };
         }
 
         // GET api/<UserDetailController>/5
