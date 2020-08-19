@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WebApi.Models.DBModels;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,11 +14,19 @@ namespace WebApi.Controllers
     [ApiController]
     public class UserDetailController : ControllerBase
     {
+        private apnastoreContext _context;
+
+        public UserDetailController(apnastoreContext context)
+        {
+            this._context = context;
+        }
+
         // GET: api/<UserDetailController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public Task<List<UserDetail>> Get()
         {
-            return new string[] { "arun", "singh","rawat" };
+            return Task.Run(() => _context.UserDetail.ToList());
+                      //return new string[] { "arun", "singh","rawat" };
         }
 
         // GET api/<UserDetailController>/5
